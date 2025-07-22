@@ -9,10 +9,10 @@ pipeline{
                 script{
                     withCredentials([string(credentialsId: 'docker_pass', variable: 'docker_p')]) {
                         sh '''
-                         docker build -t 192.168.117.137:9797/harpreet:${VERSION} .
+                         docker build -t 192.168.117.137:9797/app-python:${VERSION} .
                          echo $docker_p | docker login -u admin --password-stdin 192.168.117.137:9797 
-                         docker push 192.168.117.137:9797/harpreet:${VERSION} 
-                         docker rmi 192.168.117.137:9797/harpreet:${VERSION}            
+                         docker push 192.168.117.137:9797/app-python:${VERSION} 
+                         docker rmi 192.168.117.137:9797/app-python:${VERSION}            
                         '''
                     }
                 }
