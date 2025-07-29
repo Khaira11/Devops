@@ -18,5 +18,17 @@ pipeline{
                 }
             } 
         }
-     }
-  }
+              stage("deploying helm charts to K8cluster"){
+            steps{
+                script{
+                       dir('kubernetes/') {
+                        sh '''
+                            kubectl apply -f todo-app.yml
+                            kubectl apply -f voting-nodeport.yml
+                          '''
+                   } 
+                }
+            }
+         }  
+      }
+   }
