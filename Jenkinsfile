@@ -18,13 +18,13 @@ pipeline{
                 }
             } 
         }
-              stage("deploying helm charts to K8cluster"){
+        stage("deploying helm charts to K8cluster"){
             steps{
                 script{
                        dir('/root/Devops/flask-app-db/kubernetes#') {
                         sh '''
-                            kubectl apply -f todo-app.yml
-                            kubectl apply -f voting-nodeport.yml
+                            kubectl apply -f todo-app.yaml
+                            kubectl apply -f voting-nodeport.yaml
                           '''
                    } 
                 }
